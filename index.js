@@ -3,7 +3,9 @@ const fs = require("fs");
 const Circle = require('./lib/circle');
 const Triangle = require("./lib/triangle")
 const Square = require("./lib/square")
- 
+
+// packages required
+//  questions
 inquirer
   .prompt([
     {
@@ -29,11 +31,13 @@ inquirer
       }])
       .then(response=>{
 
+
+
         if(response.shape==="Circle"){
             const circle = new Circle()
-            circle.setColor(response.textColor)
-            circle.setText(response.text)
-            circle.setShapeColor(response.shapeColor)
+            circle.setColor(response.textColor) // color of text is determined by answer
+            circle.setText(response.text) // text is determined by user answer
+            circle.setShapeColor(response.shapeColor) // color of shape is determined by user answer
             fs.writeFile("./examples/logo.svg",circle.render(),(err)=>{
                 console.log("Generated logo.svg")
             })
